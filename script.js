@@ -5,9 +5,16 @@ document.querySelectorAll(".faq-item").forEach(item=>{
 const toast=document.getElementById("toast");
 function showToast(e){
   if(e) e.preventDefault();
+  
+  // 1. Mostra o balão de aviso (toast) na tela
   toast.classList.add("show");
   clearTimeout(window.toastTimer);
   window.toastTimer=setTimeout(()=>toast.classList.remove("show"),3200);
+
+  // 2. Captura o link do botão e abre numa nova guia de forma limpa
+  if (e && e.currentTarget && e.currentTarget.href) {
+    window.open(e.currentTarget.href, '_blank', 'noopener,noreferrer');
+  }
 }
 
 const revealItems=document.querySelectorAll(".op-card,.step,.proof-box,.section-heading");
